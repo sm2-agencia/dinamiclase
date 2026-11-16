@@ -1,0 +1,324 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Pizarra de dibujo · Dinamiclase</title>
+    <meta name="description" content="Pizarra digital infinita y gratuita: figuras con trazo a mano, flechas, texto, imágenes, puntero láser, zoom y exportación a PNG o SVG. Sin registro.">
+    <meta name="theme-color" content="#FB5306">
+    <link rel="canonical" href="https://dinamiclase.org/pizarra.html">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="es_ES">
+    <meta property="og:title" content="Pizarra de dibujo · Dinamiclase">
+    <meta property="og:description" content="Pizarra digital infinita y gratuita: figuras con trazo a mano, flechas, texto, imágenes, puntero láser, zoom y exportación a PNG o SVG. Sin registro.">
+    <meta property="og:url" content="https://dinamiclase.org/pizarra.html">
+    <meta property="og:image" content="https://dinamiclase.org/IMG/my-favicon/web-app-manifest-512x512.png">
+
+    <script>document.documentElement.classList.add('dc-js');</script>
+
+    <!-- FAVICON (rutas relativas: compatibles con GitHub Pages) -->
+    <link rel="icon" type="image/png" href="IMG/my-favicon/favicon-96x96.png" sizes="96x96">
+    <link rel="icon" type="image/svg+xml" href="IMG/my-favicon/favicon.svg">
+    <link rel="shortcut icon" href="IMG/my-favicon/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="IMG/my-favicon/apple-touch-icon.png">
+    <link rel="manifest" href="IMG/my-favicon/site.webmanifest">
+
+    <!-- Tipografías + iconos -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Fredoka:wght@500;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Sistema de diseño Dinamiclase -->
+    <link rel="stylesheet" href="dinamiclase.css">
+    <link rel="stylesheet" href="herramientas.css">
+  </head>
+
+  <body class="dc">
+    <a class="dc-skip" href="#herramienta">Saltar a la herramienta</a>
+
+    <!-- =============================================================
+         NAVEGACIÓN
+         ============================================================= -->
+    <header class="dc-nav">
+      <div class="dc-container dc-nav__inner">
+        <a class="dc-brand" href="index.html" aria-label="Dinamiclase, inicio">
+          <img src="IMG/logo/logo-128x128.svg" alt="" width="42" height="42">
+          <span>Dinami<span class="dc-brand__accent">clase</span></span>
+        </a>
+
+        <nav class="dc-nav__nav" aria-label="Principal">
+          <ul class="dc-nav__menu" id="dc-menu">
+            <li><a class="dc-nav__link" href="#herramienta"><i class="bi bi-easel2-fill" aria-hidden="true"></i> Herramienta</a></li>
+            <li><a class="dc-nav__link" href="#ideas"><i class="bi bi-lightbulb-fill" aria-hidden="true"></i> Ideas</a></li>
+            <li><a class="dc-nav__link" href="index.html#herramientas"><i class="bi bi-grid-fill" aria-hidden="true"></i> Más herramientas</a></li>
+            <li><a class="dc-nav__link" href="index.html#sugerencias"><i class="bi bi-chat-heart-fill" aria-hidden="true"></i> Sugerencias</a></li>
+          </ul>
+        </nav>
+
+
+        <button class="dc-nav__toggle" type="button" aria-expanded="false" aria-controls="dc-menu" aria-label="Abrir menú">
+          <i class="bi bi-list" aria-hidden="true"></i><i class="bi bi-x-lg" aria-hidden="true"></i>
+        </button>
+      </div>
+    </header>
+
+    <main id="contenido">
+      <!-- =============================================================
+           CABECERA DE LA HERRAMIENTA
+           ============================================================= -->
+      <header class="pz-head dc-theme-orange">
+        <nav aria-label="Ruta de navegación">
+          <ol class="dc-breadcrumb">
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="index.html#herramientas">Herramientas</a></li>
+          </ol>
+        </nav>
+        <h1 class="pz-head__title" id="tool-title"><i class="bi bi-easel2-fill" aria-hidden="true"></i> Pizarra de dibujo</h1>
+        <p class="pz-head__lead">Pizarra infinita: figuras a mano alzada, flechas, texto, imágenes y puntero láser. <a href="#ideas">Ideas para clase</a></p>
+      </header>
+
+      <!-- =============================================================
+           HERRAMIENTA
+           ============================================================= -->
+      <section class="dc-workspace dc-theme-orange pz-workspace" id="herramienta" aria-label="Pizarra de dibujo">
+        <div class="pz-wrap">
+          <div class="dc-panel dc-stage pz" id="stage" data-dc-keep-esc>
+            <div class="pz-board" id="board" data-bg="blanco" data-tool="selection">
+              <canvas id="pizarraCanvas" aria-label="Lienzo de la pizarra. Usa la barra de herramientas para dibujar."></canvas>
+              <textarea class="pz-editor" id="textEditor" spellcheck="false" aria-label="Escribe el texto" hidden></textarea>
+
+              <!-- Menú principal -->
+              <div class="pz-corner pz-corner--tl">
+                <button class="pz-btn" type="button" id="menuBtn" aria-haspopup="true" aria-expanded="false" aria-controls="mainMenu" title="Menú" aria-label="Menú"><i class="bi bi-list" aria-hidden="true"></i></button>
+                <div class="pz-menu" id="mainMenu" role="menu" hidden>
+                  <button type="button" role="menuitem" data-action="open"><i class="bi bi-folder2-open" aria-hidden="true"></i> Abrir archivo… <kbd>Ctrl+O</kbd></button>
+                  <button type="button" role="menuitem" data-action="save"><i class="bi bi-floppy-fill" aria-hidden="true"></i> Guardar archivo <kbd>Ctrl+S</kbd></button>
+                  <button type="button" role="menuitem" data-action="export"><i class="bi bi-image" aria-hidden="true"></i> Exportar imagen PNG <kbd>Ctrl+Shift+E</kbd></button>
+                  <button type="button" role="menuitem" data-action="export-svg"><i class="bi bi-filetype-svg" aria-hidden="true"></i> Exportar SVG</button>
+                  <button type="button" role="menuitem" data-action="copy-png"><i class="bi bi-clipboard-fill" aria-hidden="true"></i> Copiar como imagen</button>
+                  <button type="button" role="menuitem" data-action="image"><i class="bi bi-file-earmark-image" aria-hidden="true"></i> Insertar imagen…</button>
+                  <hr>
+                  <p class="pz-menu__label">Fondo</p>
+                  <div class="pz-bgs" role="radiogroup" aria-label="Fondo">
+                    <label title="Blanco"><input type="radio" name="bg" value="blanco" checked><span class="pz-bg pz-bg--blanco"></span><small>Blanco</small></label>
+                    <label title="Cuadrícula"><input type="radio" name="bg" value="cuadricula"><span class="pz-bg pz-bg--cuadricula"></span><small>Cuadrícula</small></label>
+                    <label title="Puntos"><input type="radio" name="bg" value="puntos"><span class="pz-bg pz-bg--puntos"></span><small>Puntos</small></label>
+                    <label title="Rayado"><input type="radio" name="bg" value="rayado"><span class="pz-bg pz-bg--rayado"></span><small>Rayado</small></label>
+                    <label title="Pizarra verde"><input type="radio" name="bg" value="pizarra"><span class="pz-bg pz-bg--pizarra"></span><small>Pizarra</small></label>
+                  </div>
+                  <hr>
+                  <button type="button" role="menuitem" data-action="help"><i class="bi bi-keyboard" aria-hidden="true"></i> Atajos de teclado <kbd>?</kbd></button>
+                  <button type="button" role="menuitem" data-action="clear" class="is-danger"><i class="bi bi-trash3-fill" aria-hidden="true"></i> Limpiar lienzo</button>
+                </div>
+              </div>
+
+              <!-- Barra de herramientas -->
+              <div class="pz-tools" role="toolbar" aria-label="Herramientas de dibujo">
+                <button class="pz-tool" type="button" data-lock aria-pressed="false" title="Mantener herramienta activa (Q)" aria-label="Mantener herramienta activa"><i class="bi bi-unlock" aria-hidden="true"></i></button>
+                <span class="pz-sep" aria-hidden="true"></span>
+                <button class="pz-tool" type="button" data-tool="hand" title="Mano: mover el lienzo (H)" aria-label="Mano"><i class="bi bi-hand-index-thumb" aria-hidden="true"></i></button>
+                <button class="pz-tool" type="button" data-tool="selection" title="Seleccionar (V o 1)" aria-label="Seleccionar"><i class="bi bi-cursor-fill" aria-hidden="true"></i><small>1</small></button>
+                <button class="pz-tool" type="button" data-tool="rectangle" title="Rectángulo (R o 2)" aria-label="Rectángulo"><i class="bi bi-square" aria-hidden="true"></i><small>2</small></button>
+                <button class="pz-tool" type="button" data-tool="diamond" title="Rombo (D o 3)" aria-label="Rombo"><i class="bi bi-diamond" aria-hidden="true"></i><small>3</small></button>
+                <button class="pz-tool" type="button" data-tool="ellipse" title="Elipse (O o 4)" aria-label="Elipse"><i class="bi bi-circle" aria-hidden="true"></i><small>4</small></button>
+                <button class="pz-tool" type="button" data-tool="arrow" title="Flecha (A o 5)" aria-label="Flecha"><i class="bi bi-arrow-right" aria-hidden="true"></i><small>5</small></button>
+                <button class="pz-tool" type="button" data-tool="line" title="Línea (L o 6)" aria-label="Línea"><i class="bi bi-dash-lg" aria-hidden="true"></i><small>6</small></button>
+                <button class="pz-tool" type="button" data-tool="freedraw" title="Lápiz (P o 7)" aria-label="Lápiz"><i class="bi bi-pencil-fill" aria-hidden="true"></i><small>7</small></button>
+                <button class="pz-tool" type="button" data-tool="text" title="Texto (T o 8)" aria-label="Texto"><i class="bi bi-fonts" aria-hidden="true"></i><small>8</small></button>
+                <button class="pz-tool" type="button" data-tool="image" title="Insertar imagen (9)" aria-label="Insertar imagen"><i class="bi bi-image" aria-hidden="true"></i><small>9</small></button>
+                <button class="pz-tool" type="button" data-tool="eraser" title="Borrador (E o 0)" aria-label="Borrador"><i class="bi bi-eraser-fill" aria-hidden="true"></i><small>0</small></button>
+                <span class="pz-sep" aria-hidden="true"></span>
+                <button class="pz-tool" type="button" data-tool="laser" title="Puntero láser (K)" aria-label="Puntero láser"><i class="bi bi-magic" aria-hidden="true"></i></button>
+              </div>
+
+              <!-- Propiedades -->
+              <div class="pz-props" id="props" hidden aria-label="Propiedades"></div>
+
+              <!-- Zoom y deshacer -->
+              <div class="pz-corner pz-corner--bl">
+                <div class="pz-pill" role="group" aria-label="Zoom">
+                  <button type="button" id="zoomOut" title="Alejar (Ctrl −)" aria-label="Alejar"><i class="bi bi-dash-lg" aria-hidden="true"></i></button>
+                  <button type="button" id="zoomReset" title="Restablecer zoom (Ctrl 0)" aria-label="Restablecer zoom">100%</button>
+                  <button type="button" id="zoomIn" title="Acercar (Ctrl +)" aria-label="Acercar"><i class="bi bi-plus-lg" aria-hidden="true"></i></button>
+                  <button type="button" id="zoomFit" title="Ver todo (Shift 1)" aria-label="Ver todo"><i class="bi bi-arrows-angle-expand" aria-hidden="true"></i></button>
+                </div>
+                <div class="pz-pill" role="group" aria-label="Historial">
+                  <button type="button" id="undoBtn" title="Deshacer (Ctrl+Z)" aria-label="Deshacer" disabled><i class="bi bi-arrow-counterclockwise" aria-hidden="true"></i></button>
+                  <button type="button" id="redoBtn" title="Rehacer (Ctrl+Y)" aria-label="Rehacer" disabled><i class="bi bi-arrow-clockwise" aria-hidden="true"></i></button>
+                </div>
+              </div>
+
+              <div class="pz-corner pz-corner--br">
+                <button class="pz-btn" type="button" data-action="help" title="Atajos de teclado (?)" aria-label="Atajos de teclado"><i class="bi bi-question-lg" aria-hidden="true"></i></button>
+                <button class="pz-btn" type="button" data-dc-fullscreen="#stage"><i class="bi bi-arrows-fullscreen" aria-hidden="true"></i></button>
+              </div>
+
+              <p class="pz-welcome" id="welcome" aria-hidden="true">
+                <i class="bi bi-stars"></i>
+                <strong>¡Tu pizarra infinita!</strong>
+                <span>Elige una herramienta arriba y dibuja. Arrastra con la mano o con la rueda para moverte; <kbd>Ctrl</kbd> + rueda para hacer zoom. Todo se guarda solo en este navegador.</span>
+              </p>
+
+              <input type="file" id="imageInput" accept="image/*" hidden>
+              <input type="file" id="fileInput" accept=".dinamiclase,.json,application/json" hidden>
+            </div>
+          </div>
+
+          <dialog class="dc-dialog pz-help" id="helpDialog" aria-labelledby="helpTitle">
+            <div class="dc-dialog__card dc-theme-orange">
+              <button class="dc-dialog__close" type="button" data-close aria-label="Cerrar"><i class="bi bi-x-lg" aria-hidden="true"></i></button>
+              <h2 id="helpTitle">Atajos de teclado</h2>
+              <div class="pz-help__grid">
+                <div>
+                  <h3>Herramientas</h3>
+                  <dl>
+                    <dt><kbd>V</kbd> <kbd>1</kbd></dt><dd>Seleccionar</dd>
+                    <dt><kbd>R</kbd> <kbd>2</kbd></dt><dd>Rectángulo</dd>
+                    <dt><kbd>D</kbd> <kbd>3</kbd></dt><dd>Rombo</dd>
+                    <dt><kbd>O</kbd> <kbd>4</kbd></dt><dd>Elipse</dd>
+                    <dt><kbd>A</kbd> <kbd>5</kbd></dt><dd>Flecha</dd>
+                    <dt><kbd>L</kbd> <kbd>6</kbd></dt><dd>Línea</dd>
+                    <dt><kbd>P</kbd> <kbd>7</kbd></dt><dd>Lápiz</dd>
+                    <dt><kbd>T</kbd> <kbd>8</kbd></dt><dd>Texto</dd>
+                    <dt><kbd>9</kbd></dt><dd>Imagen</dd>
+                    <dt><kbd>E</kbd> <kbd>0</kbd></dt><dd>Borrador</dd>
+                    <dt><kbd>K</kbd></dt><dd>Puntero láser</dd>
+                    <dt><kbd>H</kbd></dt><dd>Mano</dd>
+                    <dt><kbd>Q</kbd></dt><dd>Mantener herramienta</dd>
+                  </dl>
+                </div>
+                <div>
+                  <h3>Edición</h3>
+                  <dl>
+                    <dt><kbd>Ctrl</kbd> <kbd>Z</kbd> / <kbd>Y</kbd></dt><dd>Deshacer / rehacer</dd>
+                    <dt><kbd>Ctrl</kbd> <kbd>C</kbd> <kbd>X</kbd> <kbd>V</kbd></dt><dd>Copiar, cortar, pegar</dd>
+                    <dt><kbd>Ctrl</kbd> <kbd>D</kbd></dt><dd>Duplicar</dd>
+                    <dt><kbd>Ctrl</kbd> <kbd>A</kbd></dt><dd>Seleccionar todo</dd>
+                    <dt><kbd>Supr</kbd></dt><dd>Eliminar</dd>
+                    <dt><kbd>Flechas</kbd></dt><dd>Mover (con <kbd>Shift</kbd>, más)</dd>
+                    <dt><kbd>Ctrl</kbd> <kbd>]</kbd> / <kbd>[</kbd></dt><dd>Adelante / atrás</dd>
+                    <dt><kbd>Shift</kbd> al dibujar</dt><dd>Proporción fija / 15°</dd>
+                    <dt><kbd>Alt</kbd> al arrastrar</dt><dd>Duplicar</dd>
+                    <dt>Doble clic</dt><dd>Escribir texto o etiqueta</dd>
+                    <dt><kbd>Espacio</kbd> + arrastrar</dt><dd>Mover el lienzo</dd>
+                    <dt><kbd>Ctrl</kbd> + rueda</dt><dd>Zoom</dd>
+                    <dt><kbd>Shift</kbd> <kbd>1</kbd></dt><dd>Ver todo</dd>
+                  </dl>
+                </div>
+              </div>
+            </div>
+          </dialog>
+        </div>
+      </section>
+
+      <!-- =============================================================
+           IDEAS PARA CLASE
+           ============================================================= -->
+      <section class="dc-section dc-section--compact dc-section--tinted dc-theme-orange" id="ideas" aria-labelledby="ideas-title">
+        <div class="dc-container">
+          <header class="dc-section-head dc-reveal">
+            <p class="dc-eyebrow"><i class="bi bi-lightbulb-fill" aria-hidden="true"></i> Ideas para tu clase</p>
+            <h2 class="dc-title" id="ideas-title">¿Cómo usarla en el aula?</h2>
+          </header>
+          <ul class="dc-ideas" data-dc-stagger>
+            <li class="dc-idea dc-theme-blue dc-reveal">
+              <span class="dc-idea__icon" aria-hidden="true"><i class="bi bi-diagram-3-fill"></i></span>
+              <h3>Mapas conceptuales</h3>
+              <p>Dibuja ideas y conéctalas con líneas mientras la clase propone conceptos.</p>
+            </li>
+            <li class="dc-idea dc-theme-pink dc-reveal">
+              <span class="dc-idea__icon" aria-hidden="true"><i class="bi bi-grid-3x3"></i></span>
+              <h3>Matemáticas en cuadrícula</h3>
+              <p>Usa el fondo cuadriculado para gráficas, geometría o tablas.</p>
+            </li>
+            <li class="dc-idea dc-theme-green dc-reveal">
+              <span class="dc-idea__icon" aria-hidden="true"><i class="bi bi-download"></i></span>
+              <h3>Guarda la clase</h3>
+              <p>Descarga la pizarra como imagen y compártela con tus estudiantes.</p>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- =============================================================
+           HERRAMIENTAS RELACIONADAS
+           ============================================================= -->
+      <section class="dc-section dc-section--compact" id="relacionadas" aria-labelledby="related-title">
+        <div class="dc-container">
+          <header class="dc-section-head dc-section-head--left dc-reveal">
+            <p class="dc-eyebrow dc-theme-orange"><i class="bi bi-stars" aria-hidden="true"></i> Más dinámicas</p>
+            <h2 class="dc-title" id="related-title">Prueba también</h2>
+          </header>
+          <div class="dc-mini-tools" data-dc-stagger>
+            <a class="dc-mini-tool dc-theme-pink dc-reveal" href="storycube-normal.html">
+              <span class="dc-mini-tool__icon" aria-hidden="true"><i class="bi bi-dice-3-fill"></i></span>
+              <span><strong>Story Icons</strong><span class="dc-mini-tool__desc">Íconos al azar para inventar historias.</span></span>
+            </a>
+            <a class="dc-mini-tool dc-theme-red dc-reveal" href="pomodoro.html">
+              <span class="dc-mini-tool__icon" aria-hidden="true"><i class="bi bi-stopwatch-fill"></i></span>
+              <span><strong>Técnica Pomodoro</strong><span class="dc-mini-tool__desc">Gestiona el tiempo de trabajo.</span></span>
+            </a>
+            <a class="dc-mini-tool dc-theme-purple dc-reveal" href="asignador-temas.html">
+              <span class="dc-mini-tool__icon" aria-hidden="true"><i class="bi bi-journal-bookmark-fill"></i></span>
+              <span><strong>Asignador de temas</strong><span class="dc-mini-tool__desc">Reparte temas entre tus estudiantes.</span></span>
+            </a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- =============================================================
+         PIE DE PÁGINA
+         ============================================================= -->
+    <footer class="dc-footer">
+      <div class="dc-container dc-footer__grid">
+        <div>
+          <a class="dc-brand" href="index.html">
+            <img src="IMG/logo/logo-128x128.svg" alt="" width="42" height="42">
+            <span>Dinami<span class="dc-brand__accent">clase</span></span>
+          </a>
+          <p>Herramientas didácticas gratuitas para dinamizar tus clases y aprender jugando.</p>
+        </div>
+        <nav aria-labelledby="footer-tools">
+          <h2 id="footer-tools">Herramientas</h2>
+          <ul class="dc-footer__links">
+            <li><a href="asignador-grupos.html">Grupos aleatorios</a></li>
+            <li><a href="asignador-temas.html">Asignador de temas</a></li>
+            <li><a href="storycube-normal.html">Story Icons</a></li>
+            <li><a href="storycube-por-lotes.html">Story Icons por lotes</a></li>
+            <li><a href="loteria-app.html">Lotería interactiva</a></li>
+            <li><a href="loteria-aleatoria.html">Lotería una a una</a></li>
+            <li><a href="ruleta.html">Ruleta de sorteos</a></li>
+            <li><a href="preguntas-rompe-hielo.html">Preguntas rompe-hielo</a></li>
+            <li><a href="pizarra.html">Pizarra de dibujo</a></li>
+            <li><a href="pomodoro.html">Técnica Pomodoro</a></li>
+            <li><a href="codigo-qr.html">Códigos QR</a></li>
+            <li><a href="memorama.html">Memorama de conceptos</a></li>
+            <li><a href="palabra-secreta.html">Palabra secreta</a></li>
+            <li><a href="tangram.html">Tangram</a></li>
+            <li><a href="sudoku.html">Sudoku</a></li>
+            <li><a href="cadaver-exquisito.html">Cadáver exquisito</a></li>
+            <li><a href="mapa-asientos.html">Mapa de asientos</a></li>
+            <li><a href="sopa-de-letras.html">Sopa de letras</a></li>
+            <li><a href="crucigrama.html">Crucigrama</a></li>
+            <li><a href="bombo-sorteo.html">Bombo de sorteos</a></li>
+            <li><a href="mecanografia.html">Mecanografía</a></li>
+            <li><a href="amigo-secreto.html">Amigo secreto</a></li>
+          </ul>
+        </nav>
+        <div>
+          <h2>Tus datos</h2>
+          <p>Tus listas y preferencias se guardan solo en este navegador. No pedimos registros ni datos personales.</p>
+          <button class="dc-link-btn" type="button" data-dc-clear-data><i class="bi bi-trash3" aria-hidden="true"></i> Borrar mis datos guardados</button>
+        </div>
+      </div>
+      <p class="dc-footer__legal">Hecho por sm2 - Agencia Creativa · Dinamiclase</p>
+    </footer>
+
+    <script src="dinamiclase.js"></script>
+    <script src="pizarra.js"></script>
+  </body>
+</html>

@@ -1,0 +1,328 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Mecanografía contra reloj · Dinamiclase</title>
+    <meta name="description" content="Práctica de mecanografía en español con tiempo: pruebas de 15 a 120 segundos, tildes y ñ, lecciones por filas, teclado en pantalla, palabras por minuto y precisión. Gratis y sin registro.">
+    <meta name="theme-color" content="#FB5306">
+    <link rel="canonical" href="https://dinamiclase.org/mecanografia.html">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="es_ES">
+    <meta property="og:title" content="Mecanografía contra reloj · Dinamiclase">
+    <meta property="og:description" content="Práctica de mecanografía en español con tiempo: pruebas de 15 a 120 segundos, tildes y ñ, lecciones por filas, teclado en pantalla, palabras por minuto y precisión. Gratis y sin registro.">
+    <meta property="og:url" content="https://dinamiclase.org/mecanografia.html">
+    <meta property="og:image" content="https://dinamiclase.org/IMG/my-favicon/web-app-manifest-512x512.png">
+
+    <script>document.documentElement.classList.add('dc-js');</script>
+
+    <!-- FAVICON (rutas relativas: compatibles con GitHub Pages) -->
+    <link rel="icon" type="image/png" href="IMG/my-favicon/favicon-96x96.png" sizes="96x96">
+    <link rel="icon" type="image/svg+xml" href="IMG/my-favicon/favicon.svg">
+    <link rel="shortcut icon" href="IMG/my-favicon/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="IMG/my-favicon/apple-touch-icon.png">
+    <link rel="manifest" href="IMG/my-favicon/site.webmanifest">
+
+    <!-- Tipografías + iconos -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Sistema de diseño Dinamiclase -->
+    <link rel="stylesheet" href="dinamiclase.css">
+    <link rel="stylesheet" href="herramientas.css">
+  </head>
+
+  <body class="dc">
+    <a class="dc-skip" href="#herramienta">Saltar a la herramienta</a>
+
+    <!-- =============================================================
+         NAVEGACIÓN
+         ============================================================= -->
+    <header class="dc-nav">
+      <div class="dc-container dc-nav__inner">
+        <a class="dc-brand" href="index.html" aria-label="Dinamiclase, inicio">
+          <img src="IMG/logo/logo-128x128.svg" alt="" width="42" height="42">
+          <span>Dinami<span class="dc-brand__accent">clase</span></span>
+        </a>
+
+        <nav class="dc-nav__nav" aria-label="Principal">
+          <ul class="dc-nav__menu" id="dc-menu">
+            <li><a class="dc-nav__link" href="#herramienta"><i class="bi bi-keyboard-fill" aria-hidden="true"></i> Herramienta</a></li>
+            <li><a class="dc-nav__link" href="#ideas"><i class="bi bi-lightbulb-fill" aria-hidden="true"></i> Ideas</a></li>
+            <li><a class="dc-nav__link" href="index.html#herramientas"><i class="bi bi-grid-fill" aria-hidden="true"></i> Más herramientas</a></li>
+            <li><a class="dc-nav__link" href="index.html#sugerencias"><i class="bi bi-chat-heart-fill" aria-hidden="true"></i> Sugerencias</a></li>
+          </ul>
+        </nav>
+
+
+        <button class="dc-nav__toggle" type="button" aria-expanded="false" aria-controls="dc-menu" aria-label="Abrir menú">
+          <i class="bi bi-list" aria-hidden="true"></i><i class="bi bi-x-lg" aria-hidden="true"></i>
+        </button>
+      </div>
+    </header>
+
+    <main id="contenido">
+      <!-- =============================================================
+           CABECERA DE LA HERRAMIENTA
+           ============================================================= -->
+      <section class="dc-toolhero dc-theme-teal" aria-labelledby="tool-title">
+        <div class="dc-deco" aria-hidden="true">
+          <span class="dc-shape dc-shape--dot dc-shape--wide dc-theme-yellow" style="--x:78%; --y:14%; --s:18px; --d:-1s"></span>
+          <span class="dc-shape dc-shape--ring dc-theme-teal" style="--x:93%; --y:58%; --s:28px; --d:-3s; --t:8s"></span>
+          <i class="bi bi-star-fill dc-shape dc-shape--wide dc-theme-pink" style="--x:62%; --y:72%; --s:20px; --d:-2s; --t:6s"></i>
+          <span class="dc-shape dc-shape--square dc-theme-blue" style="--x:97%; --y:10%; --s:16px; --d:-4s"></span>
+        </div>
+        <div class="dc-container">
+          <nav aria-label="Ruta de navegación">
+            <ol class="dc-breadcrumb">
+              <li><a href="index.html">Inicio</a></li>
+              <li><a href="index.html#herramientas">Herramientas</a></li>
+              <li><span aria-current="page">Mecanografía</span></li>
+            </ol>
+          </nav>
+          <div class="dc-toolhero__grid">
+            <span class="dc-toolhero__icon" aria-hidden="true"><i class="bi bi-keyboard-fill"></i></span>
+            <div>
+              <div class="dc-toolhero__meta">
+                <p class="dc-eyebrow"><i class="bi bi-controller" aria-hidden="true"></i> Juega</p>
+              </div>
+              <h1 class="dc-toolhero__title" id="tool-title">Mecanografía contra reloj</h1>
+              <p class="dc-toolhero__lead">Practica escritura en español con tildes y ñ: pruebas de 15 segundos a 2 minutos, lecciones por filas del teclado y tu propio texto. Mide palabras por minuto y precisión.</p>
+            </div>
+          </div>
+          <ol class="dc-howto" aria-label="Cómo se usa"><li>Elige tiempo y tipo de texto</li><li>Empieza a escribir: el reloj arranca solo</li><li>Revisa tu velocidad y tus errores</li></ol>
+        </div>
+      </section>
+
+      <!-- =============================================================
+           HERRAMIENTA
+           ============================================================= -->
+      <section class="dc-workspace dc-theme-teal" id="herramienta" aria-label="Práctica de mecanografía">
+        <div class="dc-container">
+          <div class="dc-panel dc-stage mc" id="stage">
+            <!-- Configuración -->
+            <div class="mc-config" role="group" aria-label="Configuración de la prueba">
+              <div class="mc-config__group">
+                <span class="mc-config__label">Modo</span>
+                <div class="dc-segmented dc-segmented--sm" role="radiogroup" aria-label="Modo">
+                  <label><input type="radio" name="mode" value="time" checked><span><i class="bi bi-stopwatch" aria-hidden="true"></i> Tiempo</span></label>
+                  <label><input type="radio" name="mode" value="words"><span><i class="bi bi-fonts" aria-hidden="true"></i> Palabras</span></label>
+                </div>
+              </div>
+              <div class="mc-config__group" id="timeOpts">
+                <span class="mc-config__label">Segundos</span>
+                <div class="dc-segmented dc-segmented--sm" role="radiogroup" aria-label="Duración">
+                  <label><input type="radio" name="time" value="15"><span>15</span></label>
+                  <label><input type="radio" name="time" value="30"><span>30</span></label>
+                  <label><input type="radio" name="time" value="60" checked><span>60</span></label>
+                  <label><input type="radio" name="time" value="120"><span>120</span></label>
+                </div>
+              </div>
+              <div class="mc-config__group" id="wordOpts" hidden>
+                <span class="mc-config__label">Palabras</span>
+                <div class="dc-segmented dc-segmented--sm" role="radiogroup" aria-label="Número de palabras">
+                  <label><input type="radio" name="count" value="10"><span>10</span></label>
+                  <label><input type="radio" name="count" value="25" checked><span>25</span></label>
+                  <label><input type="radio" name="count" value="50"><span>50</span></label>
+                  <label><input type="radio" name="count" value="100"><span>100</span></label>
+                </div>
+              </div>
+              <div class="mc-config__group">
+                <label class="mc-config__label" for="content">Texto</label>
+                <select class="mc-select" id="content" data-dc-persist="meca-texto">
+                  <optgroup label="Práctica libre">
+                    <option value="comunes">Palabras comunes</option>
+                    <option value="frases">Frases</option>
+                    <option value="dificiles">Palabras con tildes y ñ</option>
+                  </optgroup>
+                  <optgroup label="Lecciones por filas">
+                    <option value="guia">Fila guía (a s d f … ñ)</option>
+                    <option value="superior">Fila superior (q w e r …)</option>
+                    <option value="inferior">Fila inferior (z x c v …)</option>
+                    <option value="numeros">Números</option>
+                  </optgroup>
+                  <optgroup label="Del docente">
+                    <option value="propio">Mi propio texto…</option>
+                  </optgroup>
+                </select>
+              </div>
+              <div class="mc-config__group mc-config__group--toggles">
+                <label class="mc-toggle" title="Añade mayúsculas iniciales"><input type="checkbox" id="optCaps" data-dc-persist="meca-mayus"><span>Aa</span></label>
+                <label class="mc-toggle" title="Añade signos de puntuación"><input type="checkbox" id="optPunct" data-dc-persist="meca-punt"><span>¿!,</span></label>
+                <label class="mc-toggle" title="Añade números"><input type="checkbox" id="optNums" data-dc-persist="meca-num"><span>123</span></label>
+                <label class="mc-toggle" title="Quita las tildes del texto (útil si el teclado no las tiene)"><input type="checkbox" id="optNoAccents" data-dc-persist="meca-sin-tildes"><span>sin tildes</span></label>
+                <label class="mc-toggle mc-toggle--kb" title="Muestra el teclado con la tecla siguiente"><input type="checkbox" id="optKeyboard" checked data-dc-persist="meca-teclado"><span><i class="bi bi-keyboard" aria-hidden="true"></i></span></label>
+              </div>
+            </div>
+
+            <div class="mc-custom" id="customBox" hidden>
+              <label class="dc-field__label" for="customText">Pega o escribe el texto que practicarán tus estudiantes</label>
+              <textarea class="dc-input" id="customText" rows="4" data-dc-persist="meca-texto-propio" placeholder="Por ejemplo, un párrafo de la lectura de hoy o el vocabulario de la unidad."></textarea>
+            </div>
+
+            <!-- Marcador en vivo -->
+            <div class="mc-live" aria-live="off">
+              <div class="mc-live__item mc-live__item--main"><strong id="liveTimer">60</strong><span id="liveTimerLabel">segundos</span></div>
+              <div class="mc-live__item"><strong id="liveWpm">0</strong><span>ppm</span></div>
+              <div class="mc-live__item"><strong id="liveAcc">100%</strong><span>precisión</span></div>
+              <div class="mc-live__tools">
+                <button class="dc-icon-btn" type="button" id="restartBtn" title="Reiniciar (Tab + Enter o Esc)" aria-label="Reiniciar"><i class="bi bi-arrow-clockwise" aria-hidden="true"></i></button>
+                <button class="dc-icon-btn" type="button" data-dc-sound><i class="bi bi-volume-up-fill" aria-hidden="true"></i></button>
+                <button class="dc-icon-btn" type="button" data-dc-fullscreen="#stage"><i class="bi bi-arrows-fullscreen" aria-hidden="true"></i></button>
+              </div>
+            </div>
+            <div class="mc-progress" aria-hidden="true"><span id="progressBar"></span></div>
+
+            <!-- Texto -->
+            <div class="mc-typing" id="typing">
+              <div class="mc-words" id="words" aria-hidden="true"></div>
+              <span class="mc-caret" id="caret" aria-hidden="true"></span>
+              <input class="mc-input" id="typeInput" type="text" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" aria-label="Escribe aquí el texto que aparece">
+              <button class="mc-focus" id="focusHint" type="button"><i class="bi bi-hand-index-thumb-fill" aria-hidden="true"></i> Haz clic aquí o pulsa cualquier tecla para escribir</button>
+            </div>
+            <p class="dc-field__hint dc-kbd-hint mc-hint"><kbd class="dc-kbd">Tab</kbd> + <kbd class="dc-kbd">Enter</kbd> o <kbd class="dc-kbd">Esc</kbd> reinicia · el reloj arranca con la primera tecla · <kbd class="dc-kbd">Espacio</kbd> pasa a la siguiente palabra</p>
+
+            <!-- Teclado -->
+            <div class="mc-kb" id="keyboard" aria-hidden="true"></div>
+
+            <!-- Resultados -->
+            <div class="mc-results" id="results" hidden tabindex="-1" aria-labelledby="resTitle">
+              <h2 class="mc-results__title" id="resTitle"><i class="bi bi-trophy-fill" aria-hidden="true"></i> <span id="resHeadline">¡Prueba terminada!</span></h2>
+              <div class="mc-results__grid">
+                <div class="mc-big"><strong id="resWpm">0</strong><span>palabras por minuto</span></div>
+                <div class="mc-big"><strong id="resAcc">0%</strong><span>precisión</span></div>
+                <div class="mc-stats">
+                  <div><span>PPM brutas</span><strong id="resRaw">0</strong></div>
+                  <div><span>Caracteres</span><strong id="resChars" title="correctos / incorrectos / de más / omitidos">0/0/0/0</strong></div>
+                  <div><span>Tiempo</span><strong id="resTime">0 s</strong></div>
+                  <div><span>Récord (este modo)</span><strong id="resBest">—</strong></div>
+                </div>
+              </div>
+              <canvas class="mc-chart" id="chart" width="900" height="220" aria-label="Gráfica de velocidad durante la prueba"></canvas>
+              <div class="mc-weak" id="weakBox">
+                <h3><i class="bi bi-bullseye" aria-hidden="true"></i> Teclas a practicar</h3>
+                <div class="mc-weak__keys" id="weakKeys"></div>
+              </div>
+              <div class="mc-results__actions">
+                <button class="dc-btn dc-btn--theme" type="button" id="againBtn"><i class="bi bi-arrow-repeat" aria-hidden="true"></i> Otra prueba</button>
+                <button class="dc-btn dc-btn--ghost" type="button" id="repeatBtn"><i class="bi bi-arrow-counterclockwise" aria-hidden="true"></i> Repetir el mismo texto</button>
+                <button class="dc-btn dc-btn--ghost" type="button" id="copyResBtn"><i class="bi bi-clipboard" aria-hidden="true"></i> Copiar resultado</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- =============================================================
+           IDEAS PARA CLASE
+           ============================================================= -->
+      <section class="dc-section dc-section--compact dc-section--tinted dc-theme-teal" id="ideas" aria-labelledby="ideas-title">
+        <div class="dc-container">
+          <header class="dc-section-head dc-reveal">
+            <p class="dc-eyebrow"><i class="bi bi-lightbulb-fill" aria-hidden="true"></i> Ideas para tu clase</p>
+            <h2 class="dc-title" id="ideas-title">¿Cómo usarla en el aula?</h2>
+          </header>
+          <ul class="dc-ideas" data-dc-stagger>
+            <li class="dc-idea dc-theme-blue dc-reveal">
+              <span class="dc-idea__icon" aria-hidden="true"><i class="bi bi-keyboard"></i></span>
+              <h3>De fila en fila</h3>
+              <p>Empieza con la fila guía y el teclado visible; pasa a las filas superior e inferior cuando la precisión supere el 95&nbsp;%.</p>
+            </li>
+            <li class="dc-idea dc-theme-pink dc-reveal">
+              <span class="dc-idea__icon" aria-hidden="true"><i class="bi bi-journal-text"></i></span>
+              <h3>Vocabulario de la unidad</h3>
+              <p>Con «Mi propio texto» repasan las palabras clave del tema mientras ganan velocidad.</p>
+            </li>
+            <li class="dc-idea dc-theme-green dc-reveal">
+              <span class="dc-idea__icon" aria-hidden="true"><i class="bi bi-graph-up-arrow"></i></span>
+              <h3>Reto semanal</h3>
+              <p>Cada estudiante anota su récord de 60 segundos y compite contra sí mismo: lo que cuenta es mejorar.</p>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- =============================================================
+           HERRAMIENTAS RELACIONADAS
+           ============================================================= -->
+      <section class="dc-section dc-section--compact" id="relacionadas" aria-labelledby="related-title">
+        <div class="dc-container">
+          <header class="dc-section-head dc-section-head--left dc-reveal">
+            <p class="dc-eyebrow dc-theme-teal"><i class="bi bi-stars" aria-hidden="true"></i> Más dinámicas</p>
+            <h2 class="dc-title" id="related-title">Prueba también</h2>
+          </header>
+          <div class="dc-mini-tools" data-dc-stagger>
+            <a class="dc-mini-tool dc-theme-purple dc-reveal" href="palabra-secreta.html">
+              <span class="dc-mini-tool__icon" aria-hidden="true"><i class="bi bi-alphabet-uppercase"></i></span>
+              <span><strong>Palabra secreta</strong><span class="dc-mini-tool__desc">Adivina la palabra letra a letra.</span></span>
+            </a>
+            <a class="dc-mini-tool dc-theme-green dc-reveal" href="sopa-de-letras.html">
+              <span class="dc-mini-tool__icon" aria-hidden="true"><i class="bi bi-search"></i></span>
+              <span><strong>Sopa de letras</strong><span class="dc-mini-tool__desc">Crea fichas con tu vocabulario.</span></span>
+            </a>
+            <a class="dc-mini-tool dc-theme-red dc-reveal" href="pomodoro.html">
+              <span class="dc-mini-tool__icon" aria-hidden="true"><i class="bi bi-stopwatch-fill"></i></span>
+              <span><strong>Técnica Pomodoro</strong><span class="dc-mini-tool__desc">Gestiona el tiempo de trabajo.</span></span>
+            </a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+
+    <!-- =============================================================
+         PIE DE PÁGINA
+         ============================================================= -->
+    <footer class="dc-footer">
+      <div class="dc-container dc-footer__grid">
+        <div>
+          <a class="dc-brand" href="index.html">
+            <img src="IMG/logo/logo-128x128.svg" alt="" width="42" height="42">
+            <span>Dinami<span class="dc-brand__accent">clase</span></span>
+          </a>
+          <p>Herramientas didácticas gratuitas para dinamizar tus clases y aprender jugando.</p>
+        </div>
+        <nav aria-labelledby="footer-tools">
+          <h2 id="footer-tools">Herramientas</h2>
+          <ul class="dc-footer__links">
+            <li><a href="asignador-grupos.html">Grupos aleatorios</a></li>
+            <li><a href="asignador-temas.html">Asignador de temas</a></li>
+            <li><a href="storycube-normal.html">Story Icons</a></li>
+            <li><a href="storycube-por-lotes.html">Story Icons por lotes</a></li>
+            <li><a href="loteria-app.html">Lotería interactiva</a></li>
+            <li><a href="loteria-aleatoria.html">Lotería una a una</a></li>
+            <li><a href="ruleta.html">Ruleta de sorteos</a></li>
+            <li><a href="preguntas-rompe-hielo.html">Preguntas rompe-hielo</a></li>
+            <li><a href="pizarra.html">Pizarra de dibujo</a></li>
+            <li><a href="pomodoro.html">Técnica Pomodoro</a></li>
+            <li><a href="codigo-qr.html">Códigos QR</a></li>
+            <li><a href="memorama.html">Memorama de conceptos</a></li>
+            <li><a href="palabra-secreta.html">Palabra secreta</a></li>
+            <li><a href="tangram.html">Tangram</a></li>
+            <li><a href="sudoku.html">Sudoku</a></li>
+            <li><a href="cadaver-exquisito.html">Cadáver exquisito</a></li>
+            <li><a href="mapa-asientos.html">Mapa de asientos</a></li>
+            <li><a href="sopa-de-letras.html">Sopa de letras</a></li>
+            <li><a href="crucigrama.html">Crucigrama</a></li>
+            <li><a href="bombo-sorteo.html">Bombo de sorteos</a></li>
+            <li><a href="mecanografia.html">Mecanografía</a></li>
+            <li><a href="amigo-secreto.html">Amigo secreto</a></li>
+          </ul>
+        </nav>
+        <div>
+          <h2>Tus datos</h2>
+          <p>Tus listas y preferencias se guardan solo en este navegador. No pedimos registros ni datos personales.</p>
+          <button class="dc-link-btn" type="button" data-dc-clear-data><i class="bi bi-trash3" aria-hidden="true"></i> Borrar mis datos guardados</button>
+        </div>
+      </div>
+      <p class="dc-footer__legal">Hecho por sm2 - Agencia Creativa · Dinamiclase</p>
+    </footer>
+
+    <script src="dinamiclase.js"></script>
+    <script src="mecanografia.js"></script>
+  </body>
+</html>
